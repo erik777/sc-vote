@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sc-vote-ui
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sc-vote
+        tier: frontend
+    spec:
+      containers:
+      - name: sc-admin
+        image: us.gcr.io/servicecraze/sc-vote-ui:0.0.1
+        resources:
+          requests:
+            cpu: 60m
+            memory: 50Mi
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+          # If your cluster config does not include a dns service, then to
+          # instead access environment variables to find service host
+          # info, comment out the 'value: dns' line above, and uncomment the
+          # line below:
+          # value: env
+        ports:
+        - containerPort: 80
+#        lifecycle:
+#          preStop:
+#            exec:
+#              command: ["/bin/sh", "-c", "PID=$(pidof java) && kill $PID && while ps -p $PID > /dev/null; do sleep 1; done"]

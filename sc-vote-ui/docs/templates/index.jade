@@ -1,0 +1,34 @@
+
+extends layout
+
+block title
+  | SC Vote UI based on Angular, Bootstrap 4 and Angular CLI
+
+block content
+  div.hero
+    div.hero-content
+      div.wrap
+        div.text
+          strong ng2-#[span.white-text admin]
+        div.minitext SC Vote UI
+        div.buttons-unit
+          a.button(href=installationArticleUrl) Installation guidelines
+          a.button(href=firstArticleUrl) Documentation
+        div.admin-screenshots
+          div.admin-screenshot
+            div.browser-mockup
+              a.demo-link(href='http://vote.servicecraze.com/',target='_blank')
+                img(src=contents.images['sky-preview.png'].url)
+                span.demo-link-label Demo
+  div.index-block
+    div.wrap
+      h1.centered Is it free?
+      p Yes, sc-vote is completely free and Apache licensed. That means you can do with it whatever you want.
+
+  div.index-block
+    div.wrap
+      h1.centered How can I support you guys?
+      p Here's what you can do:
+      ul
+        li Star #[a(href='https://github.com/erik777/sc-vote',target='_blank') our GitHub repo]
+        li Create pull requests, submit bugs, suggest new features

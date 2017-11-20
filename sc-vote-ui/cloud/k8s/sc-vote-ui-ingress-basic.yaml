@@ -1,0 +1,12 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: basic-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: sc-vote-ip
+spec:
+  backend:
+    serviceName: sc-vote-ui
+    servicePort: 80
+
+# ref: https://www.google.com/url?q=https://cloud.google.com/container-engine/docs/tutorials/http-balancer&sa=U&ved=0ahUKEwj9g6vL6s_VAhXpx4MKHUZlAlcQFggEMAA&client=internal-uds-cse&usg=AFQjCNH0CEP7YZxyCeJoSAmmuCG8g1hzxw
