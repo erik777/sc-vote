@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug">
+	<Appenders>
+		<Console name="CONSOLE" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d %-5p [%t] %logger{36} - %m%n" />
+		</Console>
+		<RollingFile name="FILE" fileName="logs/sc-vote.log"
+			filePattern="logs/sc-vote-%d{MM-dd-yyyy}-%i.log">
+			<PatternLayout pattern="%d %-5p [%t] %logger{36} - %m%n" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="40"/>
+		</RollingFile>
+		<Async name="ASYNC">
+			<AppenderRef ref="FILE" />
+			<AppenderRef ref="CONSOLE" />
+		</Async>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.servicecraze" level="DEBUG" additivity="false">
+			<AppenderRef ref="ASYNC" />
+		</Logger>
+		<Logger name="net.openstandards" level="DEBUG" additivity="false">
+			<AppenderRef ref="ASYNC" />
+		</Logger>
+		<Logger name="com.joshuabranch.security" level="DEBUG" additivity="false">
+			<AppenderRef ref="ASYNC" />
+		</Logger>
+		<Root level="INFO">
+			<AppenderRef ref="ASYNC" />
+		</Root>
+	</Loggers>
+</Configuration>

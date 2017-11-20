@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2015 Red Hat, Inc. and/or its affiliates.
+  ~
+  ~ Licensed under the Apache License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
+  -->
+<module xmlns="urn:jboss:module:1.3" name="io.crate.crate-jdbc">
+
+  <resources>
+    <artifact name="io.crate:crate-jdbc:2.1.7"/>
+  </resources>
+  <dependencies>
+    <module name="javax.api"/>
+    <module name="javax.transaction.api"/>
+    <module name="com.fasterxml.jackson.core.jackson-core"/>
+		<module name="com.fasterxml.jackson.core.jackson-databind"/>
+    <!-- 
+    <module name="javax.servlet.api" optional="true"/>
+     -->
+  </dependencies>
+</module>

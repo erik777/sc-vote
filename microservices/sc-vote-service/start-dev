@@ -1,0 +1,1 @@
+java -Dswarm.bind.address=10.0.0.21 -Dswarm.project.stage=development -jar target/sc-vote-swarm.jar

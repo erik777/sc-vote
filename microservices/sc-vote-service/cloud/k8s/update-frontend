@@ -1,0 +1,1 @@
+kubectl set image deployment/sc-vote sc-vote=us.gcr.io/servicecraze/sc-vote:0.0.1 

@@ -1,0 +1,14 @@
+project:
+    stage: development
+logger:
+    level: DEBUG
+swarm:
+  port:
+    offset: 50
+  datasources:
+    data-sources:
+      MyDS:
+        connection-url: jdbc:crate://alpinev1:5432/
+cratedb:
+  host: alpinev1
+  port: 5432    

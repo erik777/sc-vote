@@ -1,0 +1,32 @@
+logger:
+    level: DEBUG
+swarm:
+  port:
+    offset: 10
+  datasources:
+    jdbc-drivers:
+      crate-jdbc:
+        driver-class-name: io.crate.client.jdbc.CrateDriver
+        xa-datasource-class-name: org.postgresql.xa.PGXADataSource
+        driver-module-name: io.crate.crate-jdbc
+    data-sources:
+      MyDS:
+        driver-name: crate-jdbc
+        connection-url: jdbc:crate://crate-service:5432/
+        pool-prefill: true
+        min-pool-size:  5
+        max-pool-size: 10
+        user-name: "dummy"
+        password: "dummy"    
+  ee:
+    default-bindings-service:
+      datasource: java:jboss/datasources/MyDS         
+  consul:
+    url: "http://localhost:8500"   
+service:
+  sc-vote:
+    service-name: "sc-vote"    
+cratedb:
+  host: crate-service
+  psql:
+    port: 5432
