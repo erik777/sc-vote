@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Run `npm run build:prod:aot` first
+VERSION=0.0.1
+APP_NAME=sc-vote-ui
+REGISTRY=us.gcr.io
+NAMESPACE=servicecraze
+
+echo Copying dist to nginx/
+cp -a ../../dist nginx/
+cd nginx
+
+# build the image
+docker build -t $APP_NAME .
+
+HOST_IMAGE=$REGISTRY/$NAMESPACE/$APP_NAME
+
+echo tagging $HOST_IMAGE, version $VERSION
+
+# tag before pushing to tell it where it will go
+# docker tag [IMAGE] [HOSTNAME]/[YOUR-PROJECT-ID]/[IMAGE]
+docker tag -f $APP_NAME $HOST_IMAGE:$VERSION
+docker tag -f $APP_NAME $HOST_IMAGE:latest
+
+# push image to registry
+# gcloud docker -- push [HOSTNAME]/[YOUR-PROJECT-ID]/[IMAGE]
+gcloud docker -- push $HOST_IMAGE:$VERSION
+
+
+
+
+

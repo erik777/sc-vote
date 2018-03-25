@@ -11,8 +11,9 @@ spec:
         tier: frontend
     spec:
       containers:
-      - name: sc-admin
-        image: us.gcr.io/servicecraze/sc-vote-ui:0.0.1
+      - name: sc-vote-ui
+#        image: us.gcr.io/servicecraze/sc-vote-ui:0.0.1
+        image: registry.ng.bluemix.net/calcotest/sc-vote-ui:0.0.1
         resources:
           requests:
             cpu: 60m
